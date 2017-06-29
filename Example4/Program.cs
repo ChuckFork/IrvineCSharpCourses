@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Example4
 {
@@ -21,21 +22,13 @@ namespace Example4
                 names.Add(name);
             }
 
-            string maxName = string.Empty;
-            int maxLen = 0;
+            var maxLen = names.Max(name => name.Length);
+            var maxLenNames = names.Where(name => name.Length == maxLen);
 
-            foreach (var name in names)
+            foreach (var maxName in maxLenNames)
             {
-                var newMaxLen = Math.Max(name.Length, maxLen);
-
-                if (maxLen != newMaxLen)
-                {
-                    maxName = name;
-                    maxLen = newMaxLen;
-                }
+                 Console.WriteLine("The longest name is " + maxName + ", which has " + maxLen + " characters");
             }
-
-            Console.WriteLine("The longest name is " + maxName + ", which has " + maxLen + " characters");
         }
     }
 }
