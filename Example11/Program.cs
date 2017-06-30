@@ -16,16 +16,21 @@ namespace Example11
             // invoked on each of the derived classes, not the base class.
             foreach (var s in shapes)
             {
+                Console.WriteLine($"---Invoke draw method of {s.GetType()}");
                 s.Draw();
+                Console.WriteLine();
             }
 
             Console.WriteLine("---Going to drawing a triangle...");
 
             var triangle = new Triangle();
+            Console.WriteLine($"---Invoke draw method of {triangle.GetType()}");
             triangle.Draw();
-
+        
             Console.WriteLine("---Going to drawing a triangle as shape...");
-            ((Shape)triangle).Draw();
+            var shape = triangle as Shape;
+            Console.WriteLine($"---Invoke draw method of {shape.GetType()}");
+            shape.Draw();
         }
     }
 
